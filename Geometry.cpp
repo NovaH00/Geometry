@@ -47,6 +47,13 @@ public:
         update_length();
     }
 
+    Vector(const Point Head_point, const Point Tail_point) {
+        this->x = Tail_point.x - Head_point.x;
+        this->y = Tail_point.y - Head_point.y;
+        this->z = Tail_point.z - Head_point.z;
+        update_length();
+    }
+
     void set_component(double x, double y, double z) {
         this->x = x;
         this->y = y;
@@ -80,7 +87,7 @@ public:
         return length;
     }
 
-    void construct_vector(Point const Head_point, Point const Tail_point) {
+    void construct_vector(const Point Head_point, const Point Tail_point) {
         this->x = Tail_point.x - Head_point.x;
         this->y = Tail_point.y - Head_point.y;
         this->z = Tail_point.z - Head_point.z;
@@ -126,4 +133,8 @@ double convert_to_degree(double radian) {
 
 double convert_to_radian(double degree) {
     return degree * M_PI / 180;
+}
+
+double get_distance(const Point A, const Point B) {
+    return sqrt(pow(A.x - B.x, 2) + pow(A.y - B.y, 2) + pow(A.z - B.z, 2));
 }
